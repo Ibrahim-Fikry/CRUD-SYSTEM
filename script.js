@@ -6,7 +6,18 @@ var ProductDescription = document.getElementById('ProductDescription')
 var products = []
 
 // ------------------------------------------  create function   (1)
+function createmodal() {
+    // btn
+    document.getElementById('btnadd').style.display = ""
+    document.getElementById('btnupdate').style.display = "none"
+        // label
+    AddLabel
+    document.getElementById('AddLabel').style.display = ""
+    document.getElementById('UpdateLabel').style.display = "none"
+}
+
 function create() {
+
     var data = {
         nameinfo: ProductName.value,
         categoryinfo: ProductCategory.value,
@@ -38,12 +49,12 @@ function display() {
 
         tr += `
         <tr>
-        <th scope="row ">${index}</th>
+        <th scope="row " hidden>${index}</th>
         <td>${products[index].nameinfo}</td>
         <td>${products[index].categoryinfo}</td>
         <td>${products[index].priceinfo}</td>
         <td>${products[index].descriptioninfo}</td>
-        <td><button class="btn btn-outline-success w-100 " "> <i class="fa fa-solid fa-edit "></i></button></td>
+        <td><button class="btn btn-outline-success w-100 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"onclick='updateproduct()'> <i class="fa fa-solid fa-edit "></i></button></td>
         <td><button class="btn btn-outline-danger w-100 " onclick='deleteproduct(${index})'> <i class="fa fa-solid fa-trash-can "></i></button></td>
         </tr>
         `
@@ -102,12 +113,25 @@ function searchproduct() {
         <td>${products[index].categoryinfo}</td>
         <td>${products[index].priceinfo}</td>
         <td>${products[index].descriptioninfo}</td>
-        <td><button class="btn btn-outline-success w-100 " "> <i class="fa fa-solid fa-edit "></i></button></td>
         <td><button class="btn btn-outline-danger w-100 " onclick='deleteproduct(${index})'> <i class="fa fa-solid fa-trash-can "></i></button></td>
         </tr>
         `
         }
         document.getElementById('tbl').innerHTML = tr
     }
+
+}
+
+// --------------   updateproduct
+
+function updateproduct() {
+    // btn
+    document.getElementById('btnadd').style.display = "none"
+    document.getElementById('btnupdate').style.display = ""
+
+    // label
+    AddLabel
+    document.getElementById('AddLabel').style.display = "none"
+    document.getElementById('UpdateLabel').style.display = ""
 
 }

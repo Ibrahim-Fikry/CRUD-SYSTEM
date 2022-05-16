@@ -30,9 +30,10 @@ function clear() {
 // ------------------------------------ display function   retrive  (2)
 
 // display by using for 
-var tr = ''
+
 
 function display() {
+    var tr = ''
     for (let index = 0; index < products.length; index++) {
 
         tr += `
@@ -43,7 +44,7 @@ function display() {
         <td>${products[index].priceinfo}</td>
         <td>${products[index].descriptioninfo}</td>
         <td><button class="btn btn-outline-success w-100 " "> <i class="fa fa-solid fa-edit "></i></button></td>
-        <td><button class="btn btn-outline-danger w-100 "> <i class="fa fa-solid fa-trash-can "></i></button></td>
+        <td><button class="btn btn-outline-danger w-100 " onclick='deleteproduct(${index})'> <i class="fa fa-solid fa-trash-can "></i></button></td>
         </tr>
         `
 
@@ -72,3 +73,14 @@ function display() {
 //             `
 //     document.getElementById('tbl').innerHTML += tr
 // }
+
+
+
+// -------------------------------------  function  delete  3
+
+function deleteproduct(index) {
+
+    products.splice(index, 1)
+    console.log(products)
+    display()
+}

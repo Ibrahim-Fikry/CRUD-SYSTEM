@@ -84,3 +84,30 @@ function deleteproduct(index) {
     console.log(products)
     display()
 }
+
+
+// -------------------------------------   function  search
+
+function searchproduct() {
+    var search = document.getElementById('Search')
+
+    var tr = ''
+    for (let index = 0; index < products.length; index++) {
+        if (products[index].nameinfo.toLowerCase().includes(search.value.toLowerCase())) {
+
+            tr += `
+        <tr>
+        <th scope="row ">${index}</th>
+        <td>${products[index].nameinfo}</td>
+        <td>${products[index].categoryinfo}</td>
+        <td>${products[index].priceinfo}</td>
+        <td>${products[index].descriptioninfo}</td>
+        <td><button class="btn btn-outline-success w-100 " "> <i class="fa fa-solid fa-edit "></i></button></td>
+        <td><button class="btn btn-outline-danger w-100 " onclick='deleteproduct(${index})'> <i class="fa fa-solid fa-trash-can "></i></button></td>
+        </tr>
+        `
+        }
+        document.getElementById('tbl').innerHTML = tr
+    }
+
+}

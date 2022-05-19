@@ -3,6 +3,7 @@ var products = []
     //   get data
 function getdatatag() {
     var data = {
+        indexid: document.getElementById('index'),
         ProductName: document.getElementById('ProductName'),
         ProductCategory: document.getElementById('ProductCategory'),
         ProductPrice: document.getElementById('ProductPrice'),
@@ -12,13 +13,14 @@ function getdatatag() {
 }
 
 function getdatainfo() {
-    var profuctinfo = {
-        nameinfo: getdatatag().ProductName.value,
-        Categoryinfo: getdatatag().ProductCategory.value,
-        Priceinfo: getdatatag().ProductPrice.value,
-        Descriptioninfo: getdatatag().ProductDescription.value,
+    var getdata = {
+        indexinfo: document.getElementById('index').value,
+        nameinfo: document.getElementById('ProductName').value,
+        Categoryinfo: document.getElementById('ProductCategory').value,
+        Priceinfo: document.getElementById('ProductPrice').value,
+        Descriptioninfo: document.getElementById('ProductDescription').value,
     }
-    return profuctinfo;
+    return getdata;
 }
 
 
@@ -28,6 +30,7 @@ function clear() {
     ProductCategory.value = ""
     ProductPrice.value = ""
     ProductDescription.value = ""
+
 }
 
 // ------------------------------------------  create function   (1)
@@ -136,31 +139,40 @@ function searchproduct() {
 
 // --------------   updateproduct
 // get data by id 
+
 function getdatabyid(id) {
     // btn
     document.getElementById('btnadd').style.display = "none"
     document.getElementById('btnupdate').style.display = ""
 
-    // label
-    AddLabel
+    // label AddLabel
     document.getElementById('AddLabel').style.display = "none"
     document.getElementById('UpdateLabel').style.display = ""
 
 
-
+    getdatatag().indexid.value = id
     getdatatag().ProductName.value = products[id].nameinfo
     getdatatag().ProductCategory.value = products[id].Categoryinfo
     getdatatag().ProductPrice.value = products[id].Priceinfo
     getdatatag().ProductDescription.value = products[id].Descriptioninfo
-
-
-
 }
 
-function updateproduct(id) {
 
+function updateproduct() {
+    var index = getdatainfo().indexinfo
 
+    for (var i = 0; i < products.length; i++) {
+        if (i == index) {
+            document.getElementById('tbl').rows[i].cells[1].innerHTML = getdatainfo().nameinfo
+            document.getElementById('tbl').rows[i].cells[2].innerHTML = getdatainfo().Categoryinfo
+            document.getElementById('tbl').rows[i].cells[3].innerHTML = getdatainfo().Priceinfo
+            document.getElementById('tbl').rows[i].cells[4].innerHTML = getdatainfo().Descriptioninfo
+                // transfere data from old object to new object 
+            products[i] = {...getdatainfo() }
+            console.log(products[i]);
 
-
+        }
+    }
+    clear()
 
 }

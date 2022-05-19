@@ -17,9 +17,12 @@
 
 <body>
 
-    <h1 class="text-center  shadow">CRUD-SYSTEM</h1>
+
     <div class="container-fluid">
+        <h1 class="text-center  shadow">CRUD-SYSTEM</h1>
+
         <div class="container pt-5">
+
             <div class="row w-75 m-auto p-0">
                 <!-- Button trigger modal -->
                 <div class="col-4 ">
@@ -43,15 +46,15 @@
                         </div>
 
                         <div class="modal-body p-3     shadow-lg   " id="form">
-
+                            <input type="text" name="" id="index" hidden>
                             <label>Product Name :</label>
-                            <input type="text" id="ProductName" class="form-control mb-3">
+                            <input type="text" id="ProductName" class="form-control mb-3" autocomplete="off">
 
                             <label>Product Category :</label>
-                            <input type="text" id="ProductCategory" class="form-control mb-3">
+                            <input type="text" id="ProductCategory" class="form-control mb-3" autocomplete="off">
 
                             <label>Product Price :</label>
-                            <input type="text" id="ProductPrice" class="form-control mb-3">
+                            <input type="text" id="ProductPrice" class="form-control mb-3" autocomplete="off">
 
                             <label>Product Description :</label>
                             <textarea id="ProductDescription" class="form-control mb-3"></textarea>
@@ -59,7 +62,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-info  me-4 " data-bs-dismiss="modal" onclick="create()" id="btnadd">  ADD PRODUCT</button>
-                            <button class="btn btn-info  me-3  " data-bs-dismiss="modal" onclick="updateproduct(index)" id="btnupdate" style="display:none ;">Update PRODUCT</button>
+                            <button class="btn btn-info  me-3  " data-bs-dismiss="modal" onclick="updateproduct()" id="btnupdate" style="display:none ;">Update PRODUCT</button>
                             <button class=" btn btn-info " onclick="clear()">CLEAR</button>
                         </div>
                     </div>

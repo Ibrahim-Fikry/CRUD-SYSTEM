@@ -18,23 +18,24 @@
 <body>
 
 
-    <div class="container-fluid">
-        <h1 class="text-center  shadow">CRUD-SYSTEM</h1>
+    <div class="container-fluid p-0">
+        <h1 class="text-center  shadow  bg-primary">CRUD-SYSTEM</h1>
 
-        <div class="container pt-5">
+        <div class="container pt-5   ">
 
-            <div class="row w-75 m-auto p-0">
+            <div class=" w-75  px-0 m-auto d-flex ">
                 <!-- Button trigger modal -->
-                <div class="col-4 ">
+                <div class="col-4  ">
                     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="createmodal()">
-            create
-            </button>
+             create
+             </button>
 
                 </div>
                 <div class="col-8 pe-auto">
                     <input type="text " id="Search" onkeyup="searchproduct()" class="form-control shadow " placeholder="Search .... ">
                 </div>
             </div>
+
             <!-- --------------------------------Modal -->
             <div class="modal fade  " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog  ">
@@ -47,23 +48,27 @@
 
                         <div class="modal-body p-3     shadow-lg   " id="form">
                             <input type="text" name="" id="index" hidden>
-                            <label>Product Name :</label>
-                            <input type="text" id="ProductName" class="form-control mb-3" autocomplete="off">
+                            <label for="ProductName" class="mb-3">Product Name :</label>
+                            <input type="text" id="ProductName" class="form-control mb-3" autocomplete="off" required autofocus>
 
-                            <label>Product Category :</label>
+                            <label for="ProductCategory" class="mb-3">Product Category :</label>
                             <input type="text" id="ProductCategory" class="form-control mb-3" autocomplete="off">
 
-                            <label>Product Price :</label>
+                            <label for="ProductPrice" class="mb-3">Product Price :</label>
                             <input type="text" id="ProductPrice" class="form-control mb-3" autocomplete="off">
 
-                            <label>Product Description :</label>
+                            <label for="ProductDescription" class="mb-3">Product Description :</label>
                             <textarea id="ProductDescription" class="form-control mb-3"></textarea>
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-info  me-4 " data-bs-dismiss="modal" onclick="create()" id="btnadd">  ADD PRODUCT</button>
-                            <button class="btn btn-info  me-3  " data-bs-dismiss="modal" onclick="updateproduct()" id="btnupdate" style="display:none ;">Update PRODUCT</button>
-                            <button class=" btn btn-info " onclick="clear()">CLEAR</button>
+                            <button class=" btn btn-primary  me-4 " data-bs-dismiss="modal" onclick="create()" id="btnadd">  ADD PRODUCT</button>
+                            <button class="btn btn-primary  me-3  " data-bs-dismiss="modal" onclick="updateproduct()" id="btnupdate" style="display:none ;">Update PRODUCT</button>
+
+                            <!-- case i use clear()  function  directly >>> never work  -->
+                            <!-- when i but clear()  function into  forclear()   it worke corectly  -->
+                            <!-- please help me to understand this issue  -->
+                            <button class=" btn btn-primary " onclick="forclear()">CLEAR</button>
                         </div>
                     </div>
                 </div>
@@ -71,7 +76,7 @@
 
 
 
-
+            <!------------------ table ----------------->
 
             <table class="table table-striped w-75 m-auto p-4 mt-5 shadow ">
                 <thead class="p-3 ">

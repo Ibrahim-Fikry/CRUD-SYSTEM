@@ -26,16 +26,27 @@ function getdatainfo() {
 
 // ------------------------------------------clear function 
 function clear() {
-    ProductName.value = ""
-    ProductCategory.value = ""
-    ProductPrice.value = ""
-    ProductDescription.value = ""
+
+    // if i use following line >>> not work >>> need to understand why
+    //getdatainfo().nameinfo = ""
+
+    //if i use following line >>> will work >>> need to understand why
+    //ProductName.value = ""
+    //==============================================
+    getdatatag().ProductName.value = ""
+    getdatatag().ProductCategory.value = ""
+    getdatatag().ProductPrice.value = ""
+    getdatatag().ProductDescription.value = ""
 
 }
 
+function forclear() {
+    clear()
+}
 // ------------------------------------------  create function   (1)
 function createmodal() {
-    // btn
+    clear()
+        // btn
     document.getElementById('btnadd').style.display = ""
     document.getElementById('btnupdate').style.display = "none"
         // label
@@ -47,9 +58,15 @@ function createmodal() {
 
 
 function create() {
-    products.push(getdatainfo())
-    clear()
-    display()
+    if (ProductName.value != "" && ProductCategory.value != "" && ProductPrice.value != "" && ProductDescription.value != "") {
+        products.push(getdatainfo())
+        clear()
+        display()
+    } else {
+        // document.getElementById('btnadd').getAttribute()
+    }
+
+
 }
 
 // ------------------------------------ display function   retrive  (2)
@@ -134,6 +151,7 @@ function searchproduct() {
         }
         document.getElementById('tbl').innerHTML = tr
     }
+
 
 }
 

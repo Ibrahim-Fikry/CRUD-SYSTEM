@@ -1,6 +1,16 @@
 // my database
-var products = []
-    //   get data
+// var products = []
+
+var products
+if (localStorage.getItem("data") == null) {
+    products = []
+} else {
+    var products = JSON.parse(localStorage.getItem("data"))
+    display()
+}
+// var products = JSON.parse(localStorage.getItem("data"))
+// display()
+//   get data
 function getdatatag() {
     var data = {
         indexid: document.getElementById('index'),
@@ -33,6 +43,12 @@ function clear() {
     //if i use following line >>> will work >>> need to understand why
     //ProductName.value = ""
     //==============================================
+    // idea ****
+    // Object.keys(getdatainfo()).forEach(key => {
+    //     getdatainfo()[key] = ''
+    // });
+
+    // 
     getdatatag().ProductName.value = ""
     getdatatag().ProductCategory.value = ""
     getdatatag().ProductPrice.value = ""
@@ -60,12 +76,10 @@ function createmodal() {
 function create() {
     if (ProductName.value != "" && ProductCategory.value != "" && ProductPrice.value != "" && ProductDescription.value != "") {
         products.push(getdatainfo())
+        localStorage.setItem("data", JSON.stringify(products))
         clear()
         display()
-    } else {
-        // document.getElementById('btnadd').getAttribute()
     }
-
 
 }
 
@@ -123,6 +137,7 @@ function display() {
 function deleteproduct(index) {
 
     products.splice(index, 1)
+    localStorage.setItem("data", JSON.stringify(products))
     console.log(products)
     display()
 }

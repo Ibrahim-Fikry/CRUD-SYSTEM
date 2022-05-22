@@ -145,29 +145,32 @@ function deleteproduct(index) {
 
 // -------------------------------------   function  search
 
+
 function searchproduct() {
-    var search = document.getElementById('Search')
+    var search = document.getElementById('Search').value
 
     var tr = ''
     for (let index = 0; index < products.length; index++) {
-        if (products[index].nameinfo.toLowerCase().includes(search.value.toLowerCase())) {
+        if (products[index].nameinfo.toLowerCase().includes(search.toLowerCase())) {
 
             tr += `
         <tr>
         <th scope="row " hidden>${index}</th>
-        <td>${products[index].nameinfo}</td>
-        <td>${products[index].categoryinfo}</td>
-        <td>${products[index].priceinfo}</td>
-        <td>${products[index].descriptioninfo}</td>
+        <td>${products[index].nameinfo.replace(search,`<span style="background-color:yellow">${search}</span>`)}</td>
+        <td>${products[index].Categoryinfo}</td>
+        <td>${products[index].Priceinfo}</td>
+        <td>${products[index].Descriptioninfo}</td>
         <td><button class="btn btn-outline-success w-100 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"onclick='updateproduct(${index})'> <i class="fa fa-solid fa-edit "></i></button></td>
         <td><button class="btn btn-outline-danger w-100 " onclick='deleteproduct(${index})'> <i class="fa fa-solid fa-trash-can "></i></button></td>
         </tr>
         `
+        // alert(products[index].categoryinfo.Categoryinfo)
         }
-        document.getElementById('tbl').innerHTML = tr
+      
     }
 
-
+    document.getElementById('tbl').innerHTML = tr
+   
 }
 
 // --------------   updateproduct

@@ -5,7 +5,7 @@ var products
 if (localStorage.getItem("data") == null) {
     products = []
 } else {
-    var products = JSON.parse(localStorage.getItem("data"))
+    products = JSON.parse(localStorage.getItem("data"))
     display()
 }
 // var products = JSON.parse(localStorage.getItem("data"))
@@ -69,16 +69,21 @@ function createmodal() {
     AddLabel
     document.getElementById('AddLabel').style.display = ""
     document.getElementById('UpdateLabel').style.display = "none"
+
 }
 
 
-
 function create() {
+
     if (ProductName.value != "" && ProductCategory.value != "" && ProductPrice.value != "" && ProductDescription.value != "") {
         products.push(getdatainfo())
+            // add data into localstorage
         localStorage.setItem("data", JSON.stringify(products))
         clear()
         display()
+    } else {
+        alert('fields isn`t completed  ,please try again')
+
     }
 
 }
@@ -137,6 +142,7 @@ function display() {
 function deleteproduct(index) {
 
     products.splice(index, 1)
+        // override localstorage  with with new array after deleting itme
     localStorage.setItem("data", JSON.stringify(products))
     console.log(products)
     display()
@@ -195,6 +201,8 @@ function getdatabyid(id) {
 
 
 function updateproduct() {
+    if (ProductName.value != "" && ProductCategory.value != "" && ProductPrice.value != "" && ProductDescription.value != "") {
+
     var index = getdatainfo().indexinfo
 
     for (var i = 0; i < products.length; i++) {
@@ -210,5 +218,5 @@ function updateproduct() {
         }
     }
     clear()
-
+    }
 }
